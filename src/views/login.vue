@@ -3,7 +3,6 @@
         <v-btn
             fab
             dark
-            large
             fixed
             top
             right

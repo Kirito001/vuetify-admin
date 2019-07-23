@@ -28,7 +28,12 @@
 
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <v-menu offset-y left>
+            <v-menu
+                offset-y
+                left
+                transition="slide-y-reverse-transition"
+                :close-on-content-click="false"
+            >
                 <template v-slot:activator="{ on }">
                     <v-btn text v-on="on">
                         <v-avatar size="40" class="avatar">

@@ -20,6 +20,7 @@
                 top
                 right
                 depressed
+                small
             >
                 <v-icon>close</v-icon>
             </v-btn>
