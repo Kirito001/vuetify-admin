@@ -3,11 +3,11 @@
 # 预览地址
 <a href="http://fhluo.gitee.io/vuetify-admin" target="_blank">proview</a>
 # 使用步骤
-1.克隆项目到本地<br/>
-`git clone https://github.com/Kirito001/vuetify-admin.git`<br/>
-2.进入刚下载的项目目录<br/>
-`cd vuetify-admin`<br/>
-3.安装依赖<br/>
-`npm install`<br/>
-4.运行项目<br/>
-`npm run serve`<br/>
+<p>1.克隆项目到本地</p>
+`git clone https://github.com/Kirito001/vuetify-admin.git`
+<p>2.进入刚下载的项目目录</p>
+`cd vuetify-admin`
+<p>3.安装依赖</p>
+`npm install`
+<p>4.运行项目</p>
+`npm run serve`
