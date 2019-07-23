@@ -11,5 +11,5 @@
 `npm install`
 ##### 4.运行项目
 `npm run serve`
-## 打包成静态文件
+## 打包成静态文件（生产环境）
 `npm run build`
