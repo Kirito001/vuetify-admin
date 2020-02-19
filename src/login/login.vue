@@ -3,8 +3,8 @@
         <v-app-bar color="accent" elevation="0" app dark>
             <v-toolbar-title>
                 <v-avatar tile>
-                    <v-icon>mdi-android-auto</v-icon>
-                </v-avatar> FirebirdCRE-Admin
+                    <v-icon size="40" style="transform: rotate(180deg)">mdi-android-auto</v-icon>
+                </v-avatar> Vuetify-Admin
             </v-toolbar-title>
         </v-app-bar>
         <v-content class="accent">
