@@ -1,76 +1,59 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-Vue.use(Router);
-
-import Layout from '@/layout'
-import store from '@/store'
+Vue.use(Router)
 
 const router = new Router({
     mode: 'hash',
-    routes: [
-        {
-            path: '/login',
-            name: 'Login',
-            component: () => import('@/views/login')
+    routes: [{
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/login/login')
+    }, {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/layout/home'),
+        meta: '首页',
+        children: [{
+            path: '/consign',
+            name: 'Consign',
+            component: () => import('@/views/consign'),
+            meta: '菜单 1'
         }, {
-            path: '/',
-            component: Layout,
-            redirect: '/home',
-            children: [{
-                path: 'home',
-                name: 'Home',
-                component: () => import('@/views/home'),
-                meta: {
-                    title: '首页'
-                }
-            }, {
-                path: '/tabs',
-                name: 'Tabs',
-                component: () => import('@/views/tabs'),
-                meta: {
-                    title: '选项卡'
-                }
-            }]
+            path: '/cwdz/subnav1',
+            name: 'Subnav1',
+            component: () => import('@/views/subnav1'),
+            meta: '子菜单1'
         }, {
-            path: '/',
-            component: Layout,
-            redirect: '/table',
-            children: [{
-                path: 'table',
-                name: 'Table',
-                component: () => import('@/views/table'),
-                meta: {
-                    title: '表格'
-                }
-            }]
+            path: '/cwdz/subnav2',
+            name: 'Subnav2',
+            component: () => import('@/views/subnav2'),
+            meta: '子菜单2'
         }, {
-            path: '*',
-            redirect: '/home'
-        }
-    ]
-});
-
-router.beforeEach((to, from, next) => {
-    if(to.name == 'Login') {
-        if(localStorage.getItem('accessToken')) {
-            next(from.path);
-        } else {
-            next();
-        }
-    } else {
-        if(localStorage.getItem('accessToken')) {
-            store.commit('setTabs', {
-                name: to.meta.title,
-                href: to.path
-            });
-            next();
-        } else {
-            next({
-                path: '/login'
-            });
-        }
-    }
+            path: '/agentSummary',
+            name: 'AgentSummary',
+            component: () => import('@/views/agentSummary'),
+            meta: '菜单 3'
+        }, {
+            path: '/bill',
+            name: 'Bill',
+            component: () => import('@/views/bill'),
+            meta: '菜单 4'
+        }, {
+            path: '/siteApplyFor',
+            name: 'SiteApplyFor',
+            component: () => import('@/views/siteApplyFor'),
+            meta: '菜单 5'
+        }, {
+            path: '/punish',
+            name: 'Punish',
+            component: () => import('@/views/punish'),
+            meta: '菜单 6'
+        }]
+    }, {
+        path: '*',
+        redirect: '/home'
+    }]
 })
 
 export default router

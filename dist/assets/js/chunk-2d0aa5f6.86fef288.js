@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0aa5f6"],{1177:function(n,a,t){"use strict";t.r(a);var e=function(){var n=this,a=n.$createElement,t=n._self._c||a;return t("v-container",{staticClass:"pa-5",attrs:{fluid:""}},[n._v(" 站点申请列表 ")])},l=[],r={name:"SiteApplyFor"},s=r,c=t("2877"),i=t("6544"),u=t.n(i),o=t("a523"),p=Object(c["a"])(s,e,l,!1,null,null,null);a["default"]=p.exports;u()(p,{VContainer:o["a"]})}}]);
+//# sourceMappingURL=chunk-2d0aa5f6.86fef288.js.map

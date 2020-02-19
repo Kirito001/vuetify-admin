@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Layout from './modules/layout'
+import snackbar from './snackbar'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
     modules: {
-        Layout
+        snackbar
     }
 })
+
+export default store
