@@ -1,11 +1,9 @@
 <template>
-    <v-container class="pa-5" fluid>
-        代理点汇总
-    </v-container>
+  <v-container class="pa-5" fluid></v-container>
 </template>
 
 <script>
 export default {
-    name: 'AgentSummary'
-}
+  name: "AgentSummary"
+};
 </script>

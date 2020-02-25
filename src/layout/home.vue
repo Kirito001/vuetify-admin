@@ -8,7 +8,7 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-                <v-btn @click="fullscreen" text>
+                <v-btn class="d-md-flex d-none" @click="fullscreen" text>
                     <v-icon v-text="fullscreenIcon"></v-icon>
                 </v-btn>
                 <v-btn @click="setting=!setting" text>
@@ -20,55 +20,56 @@
             </v-toolbar-items>
         </v-app-bar>
         <v-navigation-drawer
+            width="240"
+            class="d-sm-flex d-none"
             :mini-variant="miniNav"
             mini-variant-width="64"
             src="../assets/background.png"
             :color="backgroundNav?'primary':''"
             :dark="backgroundNav"
+            hide-overlay
             clipped
             app
         >
             <v-list flat>
-                <v-list-item-group color="primary">
-                    <template v-for="list in navList">
-                        <v-list-group
-                            :key="list.path"
-                            :prepend-icon="list.icon"
-                            v-if="list.items.length"
-                            :class="backgroundNav?'white--text':'grey--text'"
-                            :active-class="backgroundNav?'white--text':'primary--text'"
-                            group="/cwdz"
-                            no-action
-                        >
-                            <template v-slot:activator>
-                                <v-list-item-content>
-                                    <v-list-item-title v-text="list.title"></v-list-item-title>
-                                </v-list-item-content>
-                            </template>
-                            <v-list-item
-                                v-for="item in list.items"
-                                :key="item.title"
-                                :active-class="backgroundNav?'secondary white--text':'primary--text'"
-                                :to="item.path"
-                            >
-                                <v-list-item-content>
-                                    <v-list-item-title v-text="item.title"></v-list-item-title>
-                                </v-list-item-content>
-                            </v-list-item>
-                        </v-list-group>
-                        <v-list-item
-                            :key="list.title"
-                            :active-class="backgroundNav?'secondary white--text':'primary--text'"
-                            :to="list.path"
-                            v-else
-                        >
-                            <v-list-item-icon><v-icon v-text="list.icon"></v-icon></v-list-item-icon>
+                <template v-for="list in navList">
+                    <v-list-group
+                        :key="list.path"
+                        :prepend-icon="list.icon"
+                        v-if="list.items.length"
+                        :class="backgroundNav?'white--text':'grey--text'"
+                        :active-class="backgroundNav?'white--text':'primary--text'"
+                        :group="list.group"
+                    >
+                        <template v-slot:activator>
                             <v-list-item-content>
                                 <v-list-item-title v-text="list.title"></v-list-item-title>
                             </v-list-item-content>
+                        </template>
+                        <v-list-item
+                            v-for="item in list.items"
+                            :key="item.title"
+                            :active-class="backgroundNav?'secondary white--text':'primary--text'"
+                            :to="item.path"
+                        >
+                            <v-list-item-action><v-icon v-text="item.icon"></v-icon></v-list-item-action>
+                            <v-list-item-content>
+                                <v-list-item-title v-text="item.title"></v-list-item-title>
+                            </v-list-item-content>
                         </v-list-item>
-                    </template>
-                </v-list-item-group>
+                    </v-list-group>
+                    <v-list-item
+                        :key="list.title"
+                        :active-class="backgroundNav?'secondary white--text':'primary--text'"
+                        :to="list.path"
+                        v-else
+                    >
+                        <v-list-item-action><v-icon v-text="list.icon"></v-icon></v-list-item-action>
+                        <v-list-item-content>
+                            <v-list-item-title v-text="list.title"></v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </template>
             </v-list>
         </v-navigation-drawer>
         <v-content class="divder" :style="background">
@@ -104,7 +105,7 @@
                 <router-view></router-view>
             </keep-alive>
         </v-content>
-        <v-navigation-drawer width="300" v-model="setting" overlay-opacity="0" temporary right app>
+        <v-navigation-drawer width="300" v-model="setting" overlay-opacity="0" floating temporary right app>
             <v-sheet class="ma-4" color="transparent">
                 <v-flex class="mb-3 subtitle-1">主题颜色</v-flex>
                 <v-color-picker width="268" canvas-height="100" class="mb-3" v-model="primarySet" hide-inputs flat dark></v-color-picker>
@@ -117,6 +118,29 @@
                 <v-switch v-model="$vuetify.theme.dark" label="夜间模式" hide-details></v-switch>
             </v-sheet>
         </v-navigation-drawer>
+        <v-footer color="primary" class="d-md-none d-flex align-start" padless fixed app>
+            <v-toolbar class="v-bottom-black-bar" color="transparent" flat dark>
+                <v-toolbar-items>
+                    <v-btn text>
+                        <v-icon>mdi-chevron-up</v-icon>
+                    </v-btn>
+                    <v-btn text>
+                        <v-icon>mdi-star</v-icon>
+                    </v-btn>
+                </v-toolbar-items>
+                <v-btn
+                    color="secondary"
+                    fab
+                    large
+                    absolute
+                    top
+                    right
+                    v-ripple="{ center: true }"
+                >
+                    <v-icon>mdi-reply</v-icon>
+                </v-btn>
+            </v-toolbar>
+        </v-footer>
     </v-app>
 </template>
 
@@ -131,44 +155,24 @@ export default {
     data() {
         return {
             navList: [{
-                title: '菜单 1',
-                icon: 'mdi-format-list-text',
-                path: '/consign',
-                items: []
-            }, {
-                title: '菜单 2',
-                icon: 'mdi-finance',
-                path: '',
-                items: [{ title: '子菜单 1', path: '/cwdz/subnav1' }, { title: '子菜单 2', path: '/cwdz/subnav2' }]
-            }, {
-                title: '菜单 3',
-                icon: 'mdi-access-point',
-                path: '/agentSummary',
-                items: []
-            }, {
-                title: '菜单 4',
-                icon: 'mdi-stack-overflow',
-                path: '/bill',
-                items: []
-            }, {
-                title: '菜单 5',
-                icon: 'mdi-format-list-checks',
-                path: '/siteApplyFor',
-                items: []
-            }, {
-                title: '菜单 6',
-                icon: 'mdi-ticket',
-                path: '/punish',
-                items: []
+                title: '插件指南',
+                icon: 'mdi-speedometer',
+                group: '/plugin',
+                items: [{
+                    title: 'prism 安装',
+                    path: '/plugin/prism',
+                    icon: 'mdi-triangle-outline'
+                }]
             }],
             tabList: [],
             setting: false,
             miniNav: false,
             tabsView: true,
-            backgroundNav: false,
+            backgroundNav: true,
             appbarShadow: 4,
             background: {
-                backgroundImage: `url(${require('../assets/background.png')})`
+                backgroundImage: `url(${require('../assets/background.png')})`,
+                backgroundAttachment: 'fixed'
             },
             fullscreenIcon: 'mdi-fullscreen',
             tabMenu: false,
@@ -182,11 +186,11 @@ export default {
             path: this.$route.path,
             title: this.$route.meta
         })
-        this.tabsView = JSON.parse(localStorage.getItem('tabsView')) || true
-        this.miniNav = JSON.parse(localStorage.getItem('miniNav')) || false
-        this.backgroundNav = JSON.parse(localStorage.getItem('backgroundNav')) || false
+        this.tabsView = JSON.parse(localStorage.getItem('tabsView') || true)
+        this.miniNav = JSON.parse(localStorage.getItem('miniNav') || false)
+        this.backgroundNav = JSON.parse(localStorage.getItem('backgroundNav') || true)
         this.appbarShadow = localStorage.getItem('appbarShadow') || 4
-        this.$vuetify.theme.dark = JSON.parse(localStorage.getItem('dark')) || false
+        this.$vuetify.theme.dark = JSON.parse(localStorage.getItem('dark') || false)
         this.$vuetify.theme.themes.light.primary = localStorage.getItem('lightPrimary') || colors.blue.base
         this.$vuetify.theme.themes.dark.primary = localStorage.getItem('darkPrimary') || colors.blue.base
         this.$vuetify.theme.themes.light.secondary = localStorage.getItem('lightSecondary') || colors.orange.base

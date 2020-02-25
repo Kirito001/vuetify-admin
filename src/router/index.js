@@ -15,6 +15,11 @@ const router = new Router({
         component: () => import('@/layout/home'),
         meta: '首页',
         children: [{
+            path: '/plugin/prism',
+            name: 'Prism',
+            component: () => import('@/views/plugin/prism'),
+            meta: '使用Prismjs'
+        }, {
             path: '/consign',
             name: 'Consign',
             component: () => import('@/views/consign'),

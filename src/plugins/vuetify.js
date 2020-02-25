@@ -27,7 +27,7 @@ export default new Vuetify({
         current: 'zhHans'
     },
     theme: {
-        dark: false,
+        dark: true,
         themes: {
             light: {
                 primary: colors.blue.base,
