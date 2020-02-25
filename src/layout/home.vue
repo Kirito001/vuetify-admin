@@ -190,7 +190,7 @@ export default {
         this.miniNav = JSON.parse(localStorage.getItem('miniNav') || false)
         this.backgroundNav = JSON.parse(localStorage.getItem('backgroundNav') || true)
         this.appbarShadow = localStorage.getItem('appbarShadow') || 4
-        this.$vuetify.theme.dark = JSON.parse(localStorage.getItem('dark') || false)
+        this.$vuetify.theme.dark = JSON.parse(localStorage.getItem('dark') || true)
         this.$vuetify.theme.themes.light.primary = localStorage.getItem('lightPrimary') || colors.blue.base
         this.$vuetify.theme.themes.dark.primary = localStorage.getItem('darkPrimary') || colors.blue.base
         this.$vuetify.theme.themes.light.secondary = localStorage.getItem('lightSecondary') || colors.orange.base
