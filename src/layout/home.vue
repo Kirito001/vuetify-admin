@@ -19,9 +19,20 @@
                 </v-btn>
             </v-toolbar-items>
         </v-app-bar>
-        <v-navigation-drawer
+        <!-- <v-navigation-drawer
             width="240"
             class="d-sm-flex d-none"
+            :mini-variant="miniNav"
+            mini-variant-width="64"
+            src="../assets/background.png"
+            :color="backgroundNav?'primary':null"
+            :dark="backgroundNav"
+            hide-overlay
+            clipped
+            app
+        > -->
+        <v-navigation-drawer
+            width="240"
             :mini-variant="miniNav"
             mini-variant-width="64"
             src="../assets/background.png"
@@ -74,7 +85,7 @@
         </v-navigation-drawer>
         <v-content class="divder pb-12" :style="background">
             <v-expand-transition>
-                <v-tabs color="secondary" style="position: sticky; top: 64px;z-index: 6" v-show="tabsView && tabList.length" show-arrows>
+                <v-tabs color="secondary" style="position: sticky; top: 64px;z-index: 5" v-show="tabsView && tabList.length" show-arrows>
                     <v-tab :name="i" @contextmenu="showMenu" v-for="(item, i) in tabList" :key="item.name" :to="item.path">
                         {{ item.title }}
                         <v-icon size="20" v-if="item.title!='首页'" @click.stop.prevent="closeTab(i)" @contextmenu.stop.prevent="">mdi-close</v-icon>
