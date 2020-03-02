@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d215c37"],{c01e:function(n,t,a){"use strict";a.r(t);var e=function(){var n=this,t=n.$createElement,a=n._self._c||t;return a("v-container",{staticClass:"pa-5",attrs:{fluid:""}},[n._v(" 处罚代理点 ")])},c=[],s={name:"Punish"},u=s,i=a("2877"),l=a("6544"),r=a.n(l),o=a("a523"),p=Object(i["a"])(u,e,c,!1,null,null,null);t["default"]=p.exports;r()(p,{VContainer:o["a"]})}}]);
-//# sourceMappingURL=chunk-2d215c37.08ae0af2.js.map
