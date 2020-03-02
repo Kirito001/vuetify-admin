@@ -39,4 +39,9 @@ input:-webkit-autofill {
 pre[class*="language-"] {
 	margin: auto 0 !important;
 }
+
+// 分页
+.v-pagination .v-pagination__item {
+	outline: none;
+}
 </style>

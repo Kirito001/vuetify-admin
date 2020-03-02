@@ -25,7 +25,7 @@
             :mini-variant="miniNav"
             mini-variant-width="64"
             src="../assets/background.png"
-            :color="backgroundNav?'primary':''"
+            :color="backgroundNav?'primary':null"
             :dark="backgroundNav"
             hide-overlay
             clipped
@@ -34,11 +34,11 @@
             <v-list flat>
                 <template v-for="list in navList">
                     <v-list-group
+                        class="white--text"
+                        v-if="list.items.length"
                         :key="list.path"
                         :prepend-icon="list.icon"
-                        v-if="list.items.length"
-                        :class="backgroundNav?'white--text':'grey--text'"
-                        :active-class="backgroundNav?'white--text':'primary--text'"
+                        :active-class="backgroundNav||$vuetify.theme.dark?'white--text':'grey--text text--darken-3'"
                         :group="list.group"
                     >
                         <template v-slot:activator>
@@ -49,7 +49,7 @@
                         <v-list-item
                             v-for="item in list.items"
                             :key="item.title"
-                            :active-class="backgroundNav?'secondary white--text':'primary--text'"
+                            active-class="secondary white--text"
                             :to="item.path"
                         >
                             <v-list-item-action><v-icon v-text="item.icon"></v-icon></v-list-item-action>
@@ -72,9 +72,9 @@
                 </template>
             </v-list>
         </v-navigation-drawer>
-        <v-content class="divder" :style="background">
+        <v-content class="divder pb-12" :style="background">
             <v-expand-transition>
-                <v-tabs style="position: sticky; top: 64px;z-index: 6" v-show="tabsView && tabList.length" show-arrows>
+                <v-tabs color="secondary" style="position: sticky; top: 64px;z-index: 6" v-show="tabsView && tabList.length" show-arrows>
                     <v-tab :name="i" @contextmenu="showMenu" v-for="(item, i) in tabList" :key="item.name" :to="item.path">
                         {{ item.title }}
                         <v-icon size="20" v-if="item.title!='首页'" @click.stop.prevent="closeTab(i)" @contextmenu.stop.prevent="">mdi-close</v-icon>
@@ -118,7 +118,7 @@
                 <v-switch v-model="$vuetify.theme.dark" label="夜间模式" hide-details></v-switch>
             </v-sheet>
         </v-navigation-drawer>
-        <v-footer color="primary" class="d-md-none d-flex align-start" padless fixed app>
+        <v-footer color="primary" class="d-md-none d-flex align-start" padless fixed>
             <v-toolbar class="v-bottom-black-bar" color="transparent" flat dark>
                 <v-toolbar-items>
                     <v-btn text>
@@ -148,7 +148,7 @@
 // 全屏插件
 import screenfull from 'screenfull'
 // vuetify提供的颜色变量
-import colors from 'vuetify/es5/util/colors'
+// import colors from 'vuetify/es5/util/colors'
 
 export default {
     name: 'Home',
@@ -162,6 +162,10 @@ export default {
                     title: 'prism 安装',
                     path: '/plugin/prism',
                     icon: 'mdi-triangle-outline'
+                }, {
+                    title: 'mdi 图标',
+                    path: '/plugin/icons',
+                    icon: 'mdi-material-design'
                 }]
             }],
             tabList: [],
@@ -190,11 +194,6 @@ export default {
         this.miniNav = JSON.parse(localStorage.getItem('miniNav') || false)
         this.backgroundNav = JSON.parse(localStorage.getItem('backgroundNav') || true)
         this.appbarShadow = localStorage.getItem('appbarShadow') || 4
-        this.$vuetify.theme.dark = JSON.parse(localStorage.getItem('dark') || true)
-        this.$vuetify.theme.themes.light.primary = localStorage.getItem('lightPrimary') || colors.blue.base
-        this.$vuetify.theme.themes.dark.primary = localStorage.getItem('darkPrimary') || colors.blue.base
-        this.$vuetify.theme.themes.light.secondary = localStorage.getItem('lightSecondary') || colors.orange.base
-        this.$vuetify.theme.themes.dark.secondary = localStorage.getItem('darkSecondary') || colors.amber.base
     },
     computed: {
         dark() {

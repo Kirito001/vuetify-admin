@@ -20,40 +20,10 @@ const router = new Router({
             component: () => import('@/views/plugin/prism'),
             meta: '使用Prismjs'
         }, {
-            path: '/consign',
-            name: 'Consign',
-            component: () => import('@/views/consign'),
-            meta: '菜单 1'
-        }, {
-            path: '/cwdz/subnav1',
-            name: 'Subnav1',
-            component: () => import('@/views/subnav1'),
-            meta: '子菜单1'
-        }, {
-            path: '/cwdz/subnav2',
-            name: 'Subnav2',
-            component: () => import('@/views/subnav2'),
-            meta: '子菜单2'
-        }, {
-            path: '/agentSummary',
-            name: 'AgentSummary',
-            component: () => import('@/views/agentSummary'),
-            meta: '菜单 3'
-        }, {
-            path: '/bill',
-            name: 'Bill',
-            component: () => import('@/views/bill'),
-            meta: '菜单 4'
-        }, {
-            path: '/siteApplyFor',
-            name: 'SiteApplyFor',
-            component: () => import('@/views/siteApplyFor'),
-            meta: '菜单 5'
-        }, {
-            path: '/punish',
-            name: 'Punish',
-            component: () => import('@/views/punish'),
-            meta: '菜单 6'
+            path: '/plugin/icons',
+            name: 'Icons',
+            component: () => import('@/views/plugin/icons'),
+            meta: 'mdi 图标'
         }]
     }, {
         path: '*',

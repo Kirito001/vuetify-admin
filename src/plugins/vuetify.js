@@ -27,18 +27,18 @@ export default new Vuetify({
         current: 'zhHans'
     },
     theme: {
-        dark: true,
+        dark:  JSON.parse(localStorage.getItem('dark')) || false,
         themes: {
             light: {
-                primary: colors.blue.base,
-                secondary: colors.orange.base,
+                primary: localStorage.getItem('lightPrimary') || '#6200ee',
+                secondary: localStorage.getItem('lightSecondary') || '#FFC107',
                 accent: '#232f34',
                 divder: '#fafafa',
                 error: colors.red.base
             },
             dark: {
-                primary: colors.blue.base,
-                secondary: colors.amber.base,
+                primary: localStorage.getItem('darkPrimary') || '#2d3035',
+                secondary: localStorage.getItem('darkSecondary') || '#4b89dc',
                 accent: '#232f34',
                 divder: '#121212',
                 error: colors.red.base

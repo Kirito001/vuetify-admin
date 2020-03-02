@@ -4,6 +4,7 @@
             <v-col cols="12" md="10" class="mb-md-4 mb-sm-3 mb-2">
                 <v-alert
                     color="secondary"
+                    class="my-4"
                     border="left"
                     icon="mdi-triangle"
                     colored-border
@@ -65,8 +66,8 @@
                     </ul>
                 </p>
                 <p>更多配置请转到：
-                    <a class="mr-4" href="https://prismjs.com/#plugins" target="_blank">prism-plugins<v-icon color="primary" size="16">mdi-open-in-new</v-icon></a>
-                    <a href="https://prismjs.com/#supported-languages" target="_blank">prism-languages<v-icon color="primary" size="16">mdi-open-in-new</v-icon></a>
+                    <a class="mr-4 secondary--text" href="https://prismjs.com/#plugins" target="_blank">prism-plugins<v-icon color="secondary" size="16">mdi-open-in-new</v-icon></a>
+                    <a class="secondary--text" href="https://prismjs.com/#supported-languages" target="_blank">prism-languages<v-icon color="secondary" size="16">mdi-open-in-new</v-icon></a>
                 </p>
                 <p>在 babel.config.js 文件中配置</p>
                 <pre data-language="js"><code class="language-js">
@@ -98,7 +99,7 @@
             <v-col cols="12" md="10" class="mb-md-4 mb-sm-3 mb-2">
                 如果你喜欢 vuetify-admin 或者这正是你需要的，可以给颗心吗！或者想给些建议
                 <v-icon>mdi-git</v-icon>
-                <a class="mr-4" href="https://github.com/Kirito001/vuetify-admin" target="_blank">vuetify-admin</a>你的鼓励就是我的动力！<br/><br/><br/>
+                <a class="mr-4 secondary--text" href="https://github.com/Kirito001/vuetify-admin" target="_blank">vuetify-admin</a>你的鼓励就是我的动力！<br/><br/><br/>
             </v-col>
         </v-row>
     </v-container>
