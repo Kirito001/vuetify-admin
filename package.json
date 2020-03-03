@@ -15,6 +15,7 @@
     "prismjs": "^1.19.0",
     "screenfull": "^5.0.2",
     "vue": "^2.6.10",
+    "vue-clipboard2": "^0.3.1",
     "vue-router": "^3.1.5",
     "vuelidate": "^0.7.5",
     "vuetify": "^2.2.12",

@@ -19,18 +19,6 @@
                 </v-btn>
             </v-toolbar-items>
         </v-app-bar>
-        <!-- <v-navigation-drawer
-            width="240"
-            class="d-sm-flex d-none"
-            :mini-variant="miniNav"
-            mini-variant-width="64"
-            src="../assets/background.png"
-            :color="backgroundNav?'primary':null"
-            :dark="backgroundNav"
-            hide-overlay
-            clipped
-            app
-        > -->
         <v-navigation-drawer
             width="240"
             :mini-variant="miniNav"
@@ -152,14 +140,23 @@
                 </v-btn>
             </v-toolbar>
         </v-footer>
+        <v-snackbar
+            :color="snackbar.color"
+            v-model="snackbar.show"
+            :timeout="snackbar.timeout||6000"
+            fixed
+            top
+        >
+            {{ snackbar.text }}
+            <v-btn color="secondary" text @click="hideSnackbar">关闭</v-btn>
+		</v-snackbar>
     </v-app>
 </template>
 
 <script>
 // 全屏插件
 import screenfull from 'screenfull'
-// vuetify提供的颜色变量
-// import colors from 'vuetify/es5/util/colors'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'Home',
@@ -207,6 +204,7 @@ export default {
         this.appbarShadow = localStorage.getItem('appbarShadow') || 4
     },
     computed: {
+        ...mapGetters(['snackbar']),
         dark() {
             return this.$vuetify.theme.dark
         },
@@ -248,6 +246,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['hideSnackbar']),
         fullscreen() {
             this.fullscreenIcon = screenfull.isFullscreen ? 'mdi-fullscreen':'mdi-fullscreen-exit'
             screenfull.toggle()

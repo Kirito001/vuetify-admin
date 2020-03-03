@@ -27,7 +27,7 @@ export default new Vuetify({
         current: 'zhHans'
     },
     theme: {
-        dark:  JSON.parse(localStorage.getItem('dark')) || false,
+        dark:  JSON.parse(localStorage.getItem('dark') || true),
         themes: {
             light: {
                 primary: localStorage.getItem('lightPrimary') || '#6200ee',

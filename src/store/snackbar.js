@@ -1,7 +1,7 @@
 const state = {
     snackbar: { // 全局消息条
         show: false,
-        timeout: 0,
+        timeout: 6000,
         color: 'grey darken-4',
         text: '消息内容'
     }
@@ -13,8 +13,6 @@ const getters = {
 
 const mutations = {
     showSnackbar(state, obj) {
-        obj.show = false;
-        obj.show = true
         state.snackbar = obj
     },
     hideSnackbar(state) {
