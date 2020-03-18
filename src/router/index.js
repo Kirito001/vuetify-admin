@@ -23,7 +23,12 @@ const router = new Router({
             path: '/plugin/icons',
             name: 'Icons',
             component: () => import('@/views/plugin/icons'),
-            meta: 'mdi 图标'
+            meta: '材质图标'
+        }, {
+            path: '/bulb/motion',
+            name: 'Motion',
+            component: () => import('@/views/bulb/motion'),
+            meta: '转场动画'
         }]
     }, {
         path: '*',

@@ -4,7 +4,7 @@
             <v-col cols="12" md="10" class="mb-md-4 mb-sm-3 mb-2">
                 <v-alert
                     color="secondary"
-                    class="my-4"
+                    class="my-4 pl-6"
                     border="left"
                     icon="mdi-triangle"
                     colored-border
@@ -107,13 +107,9 @@
 
 <script>
 import prism from 'prismjs'
+
 export default {
     name: 'Prism',
-    data() {
-        return {
-            html: `// babel.config.js\nlet a = 100;`
-        }
-    },
     mounted() {
         prism.highlightAll()
     }
