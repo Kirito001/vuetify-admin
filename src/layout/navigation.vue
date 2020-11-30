@@ -1,5 +1,6 @@
 <template>
     <v-navigation-drawer
+        v-model="isOpenLeftDrawer"
         width="240"
         :mini-variant="miniNav"
         mini-variant-width="64"
@@ -58,7 +59,8 @@ export default {
     name: 'Navigation',
     props: {
         miniNav: Boolean,
-        backgroundNav: Boolean
+        backgroundNav: Boolean,
+        isOpenLeftDrawer: Boolean
     },
     data() {
         return {
