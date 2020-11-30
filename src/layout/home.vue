@@ -232,7 +232,17 @@ export default {
         },
         closeAll() {
             this.tabList = []
-            this.$router.push('/home')
+            this.tabList.push({
+                name: 'Prism',
+                path: '/plugin/prism',
+                title: '使用Prismjs',
+            });
+            this.$router
+                .push({
+                    name: 'Prism',
+                    path: '/plugin/prism',
+                })
+                .catch(() => {});
         },
         logout() {
             localStorage.removeItem('token')
