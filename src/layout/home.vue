@@ -205,8 +205,23 @@ export default {
             })
         },
         closeTab(index) {
-            this.tabList.splice(index, 1)
-            this.$router.push(this.tabList[this.tabList.length - 1].path)
+            this.tabList.splice(index, 1);
+            if (!this.tabList.length) {
+                this.tabList.push({
+                    name: 'Prism',
+                    path: '/plugin/prism',
+                    title: '使用Prismjs',
+                });
+                this.$router
+                    .push({
+                        name: 'Prism',
+                        path: '/plugin/prism',
+                    })
+                    .catch(() => {});
+            } else
+                this.$router
+                    .push(this.tabList[this.tabList.length - 1].path)
+                    .catch(() => {});
         },
         closeOther(index) {
             let list = this.tabList[index]
