@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-app-bar height="64" color="primary" :elevation="appbarShadow" clipped-left app dark>
+        <v-app-bar height="64" color="primary" :elevation="appbarShadow" clipped-left app dark @click.stop="isOpenLeftDrawer = !isOpenLeftDrawer">
             <v-toolbar-title>
                 <v-avatar tile>
                     <v-icon size="40" style="transform: rotate(180deg)">mdi-android-auto</v-icon>
@@ -20,7 +20,7 @@
             </v-toolbar-items>
         </v-app-bar>
 
-        <Navigation :miniNav="miniNav" :backgroundNav="backgroundNav" />
+        <Navigation :miniNav="miniNav" :backgroundNav="backgroundNav" :isOpenLeftDrawer="isOpenLeftDrawer" />
 
         <v-content class="divder pb-12" :style="background">
             <v-expand-transition>
@@ -132,7 +132,8 @@ export default {
             fullscreenIcon: 'mdi-fullscreen',
             tabMenu: false,
             x: 0,
-            y: 0
+            y: 0,
+            isOpenLeftDrawer: true
         }
     },
     mounted() {
@@ -205,8 +206,23 @@ export default {
             })
         },
         closeTab(index) {
-            this.tabList.splice(index, 1)
-            this.$router.push(this.tabList[this.tabList.length - 1].path)
+            this.tabList.splice(index, 1);
+            if (!this.tabList.length) {
+                this.tabList.push({
+                    name: 'Prism',
+                    path: '/plugin/prism',
+                    title: '使用Prismjs',
+                });
+                this.$router
+                    .push({
+                        name: 'Prism',
+                        path: '/plugin/prism',
+                    })
+                    .catch(() => {});
+            } else
+                this.$router
+                    .push(this.tabList[this.tabList.length - 1].path)
+                    .catch(() => {});
         },
         closeOther(index) {
             let list = this.tabList[index]
@@ -216,7 +232,17 @@ export default {
         },
         closeAll() {
             this.tabList = []
-            this.$router.push('/home')
+            this.tabList.push({
+                name: 'Prism',
+                path: '/plugin/prism',
+                title: '使用Prismjs',
+            });
+            this.$router
+                .push({
+                    name: 'Prism',
+                    path: '/plugin/prism',
+                })
+                .catch(() => {});
         },
         logout() {
             localStorage.removeItem('token')
